@@ -1,0 +1,30 @@
+# Build output
+build/
+out/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Qt / CMake generated files
+*.qmlc
+*.jsc
+*.user
+*.autosave
+.qt/
+
+# Visual Studio
+.vs/
+*.suo
+*.VC.db
+*.VC.VC.opendb
+x64/
+Debug/
+Release/
+
+# Local Codex / assistant state
+.agents/
+.codex/
+
+# OS files
+Thumbs.db
+Desktop.ini
