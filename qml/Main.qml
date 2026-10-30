@@ -18,6 +18,14 @@ ApplicationWindow {
     visible: true
     title: qsTr("实时多路视频流智能分析平台")
 
+    required property var videoSourceModel
+    required property var alarmEventModel
+    required property var streamSessionManager
+    required property var performanceModel
+    required property var recordingModel
+    required property var appPaths
+    required property var settingsController
+
     readonly property AppTheme theme: AppTheme {}
     readonly property var navigationItems: [
         { "title": qsTr("首页") },
@@ -85,12 +93,31 @@ ApplicationWindow {
                 anchors.fill: parent
                 currentIndex: root.currentPageIndex
 
-                DashboardPage {}
-                VideoWallPage {}
-                SourceManagerPage {}
-                AlarmCenterPage {}
-                PlaybackPage {}
-                SettingsPage {}
+                DashboardPage {
+                    streamSessionManager: root.streamSessionManager
+                    performanceModel: root.performanceModel
+                    alarmModel: root.alarmEventModel
+                    recordingModel: root.recordingModel
+                }
+                VideoWallPage {
+                    streamSessionManager: root.streamSessionManager
+                    performanceModel: root.performanceModel
+                    sourceModel: root.videoSourceModel
+                }
+                SourceManagerPage {
+                    sourceModel: root.videoSourceModel
+                    streamSessionManager: root.streamSessionManager
+                }
+                AlarmCenterPage {
+                    alarmModel: root.alarmEventModel
+                }
+                PlaybackPage {
+                    recordingModel: root.recordingModel
+                }
+                SettingsPage {
+                    appPaths: root.appPaths
+                    settingsController: root.settingsController
+                }
             }
         }
     }
